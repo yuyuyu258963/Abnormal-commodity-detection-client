@@ -1,0 +1,35 @@
+#data-info-section{
+  flex: 1;
+}
+
+#dataViewRight-section{
+  overflow: hidden;
+  flex: 3;
+}
+
+.section-lineChart{
+  flex: 4;
+  display: flex;
+}
+
+.line-chart{
+  flex: 3;
+  margin-left: 10px;
+}
+.box-chart{
+  flex: 1;
+  overflow: hidden;
+}
+
+.data-info{
+  flex: 2;
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.data-info section:nth-child(even){
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 10px;
+}

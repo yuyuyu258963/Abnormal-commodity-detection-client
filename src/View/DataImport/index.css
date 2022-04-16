@@ -1,0 +1,13 @@
+.DataImport-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.section-header{
+  border-radius: 5px;
+  height: 100px;
+  padding: 20px;
+}
+.section-table{
+  flex-grow: 1;
+}

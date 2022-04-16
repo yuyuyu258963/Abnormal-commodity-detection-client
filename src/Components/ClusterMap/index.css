@@ -1,0 +1,18 @@
+#cluster-map{
+  border-radius: 5px;
+  margin-top: 1px ;
+  height: 99%;
+  width: 100%;
+}
+.cluster-nodes{
+  stroke: #ccc;
+  stroke-width: 0.7px;
+  transition: stroke-width 1s ease-in-out;
+}
+.cluster-nodes:hover{
+  stroke-width: 2px;
+}
+.selection{
+  z-index: 99;
+}
+

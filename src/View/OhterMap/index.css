@@ -1,0 +1,8 @@
+.section-otherViewMap{
+  background-color: #fff;
+  flex: 1;
+  fill: #d8a472;
+}
+.section-otherViewMap *{
+  font-weight: 600 !important;
+}
