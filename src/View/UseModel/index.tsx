@@ -27,7 +27,6 @@ export default function UseModel({}: Props) {
             RunModel().then(_ => setRunModelState(false))
           }}>
           运行模型
-          
         </Button>
         <ul className={!runModelState ? "pro-percent-gray" : "pro-percent-green"} data-color="green" >
         </ul>
