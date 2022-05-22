@@ -22,6 +22,7 @@ const SiderCustom = (props: Props) => {
                   key={item.id}
                   icon={<item.icon />}
                   title={item.name}
+                  className="menu-father"
               >
                 { getMenuEle(item.children) }
               </SubMenu>

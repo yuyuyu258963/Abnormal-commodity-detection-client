@@ -4,19 +4,19 @@ import store from "../../reducer/store"
 import { handelChangeDataMonth, handelChangeDataName, selectDataAction } from "../../reducer/action"
 
 import { V1Kind, TreeSelectData, DataMonth } from "../../constants"
-import { LoadData } from "../../axios/index"
+import { GetMatrixData, LoadData, SearchSinglePro } from "../../axios/index"
 // import TableCom
 
 
 import "./index.css"
 import TableCom from '../../Components/TableCom'
+import { throttle } from '../../utils'
 
 const { Option } = Select;
 
 declare type selectedInfoType = {
   val:    string | number;
   pos:    string;
-  // hasPreData: boolean,
 }
 
 type Props = {}
@@ -84,8 +84,22 @@ export default function DataImport({}: Props) {
                 const fileName = V1Kind[v1Index]
                 // console.dir({fileName, selectedPathId})
                 setGetData(true)
-                LoadData({ fileName, selected, selectedPathId, selectedMonth }).then((data) => {
-                  // console.dir(data);
+                LoadData({ fileName, selected, selectedPathId, selectedMonth }).then((data:any) => {
+                  const itemData = data.LineChartData[0]
+                  const itemValue =  [
+                    itemData.item_price,
+                    itemData.item_sales_volume,
+                    itemData.item_fav_num,
+                    itemData.total_eval_num,
+                    itemData.item_stock,
+                    itemData.item_id,
+                    itemData.item_name,
+                    itemData.user_id,
+                  ]
+                  const a = new Promise(() => {
+                    throttle(SearchSinglePro)(itemValue)
+                    throttle(GetMatrixData)(itemValue[7])
+                  })
                   store.dispatch(selectDataAction(data))
                   setGetData(false)
                 })

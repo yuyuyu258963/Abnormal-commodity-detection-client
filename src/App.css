@@ -75,3 +75,28 @@ section::-webkit-scrollbar-thumb{
   background-color:#515769 !important;
   border:2px solid #eff1f5 !important;
 }
+
+.section-header{
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.ant-menu-title-content{
+  font-weight: 600;
+  font-size: 14px;
+}
+/* .menu-father .ant-menu-title-content{
+  font-size: 20px;
+} */
+.ant-menu-sub .ant-menu-title-content{
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.ant-tag{
+  font-size: 15px;
+}
+
+.section-header{
+  min-height: 100px;
+}

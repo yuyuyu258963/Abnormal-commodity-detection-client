@@ -32,7 +32,7 @@ export const drawScatterMap = (clusteredData :classedDataType[]) =>{
       .data(clusteredData)
       .enter()
       .append("circle")
-      .attr('class','cluster-nodes')
+      .attr('class', d => `cluster-nodes class-${d.classId}`)
       .attr('r', 5)
       .attr('fill', d => d.classId === -1 ? "black" : colorScale_1[d.classId % 12])
       .attr("cx", d => xScale(d.x))

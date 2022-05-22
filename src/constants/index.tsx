@@ -1,7 +1,33 @@
 import { BoxDataType, ShopColDataType, TreeSelectType } from "../types/interface";
 
+/**
+ * 月份的选择
+ */
+export const DataMonth:string[] = ["6","7","8","9",
+  "所有月份"
+] 
 
-export const DataMonth:string[] = ["6","7","8","9","所有"] 
+/**
+ * 价格异常的衍生特征
+ */
+export const priceDeriveColName:string[] = ["same-CATE_NAME_LV1-mean-ITEM_PRICE-rate", "same-CATE_NAME_LV2-mean-ITEM_PRICE-rate",
+"same-CATE_NAME_LV3-mean-ITEM_PRICE-rate", "same-ITEM_ID-mean-ITEM_PRICE-rate",
+"same-CATE_NAME_LV3-DATA_MONTH-mean-same-ITEM_ID-mean-ITEM_PRICE-rate-rate",
+"same-CATE_NAME_LV1-BRAND_ID-mean-ITEM_PRICE-rate", "same-CATE_NAME_LV2-BRAND_ID-mean-ITEM_PRICE-rate",
+"same-CATE_NAME_LV3-BRAND_ID-mean-ITEM_PRICE-rate"]
+
+/**
+ * 销量异常的衍生特征
+ */
+export const saleDeriveColName:string[] = ["same-CATE_NAME_LV1-mean-ITEM_SALES_VOLUME-rate", "same-CATE_NAME_LV2-mean-ITEM_SALES_VOLUME-rate",
+"same-CATE_NAME_LV3-mean-ITEM_SALES_VOLUME-rate", "same-ITEM_ID-mean-ITEM_SALES_VOLUME-rate",
+"same-CATE_NAME_LV3-DATA_MONTH-mean-same-ITEM_ID-mean-ITEM_SALES_VOLUME-rate-rate",
+"same-CATE_NAME_LV1-BRAND_ID-mean-ITEM_SALES_VOLUME-rate",
+"same-CATE_NAME_LV2-BRAND_ID-mean-ITEM_SALES_VOLUME-rate",
+"same-CATE_NAME_LV3-BRAND_ID-mean-ITEM_SALES_VOLUME-rate"]
+
+
+
 
 /**
  * 树形下拉框的选项

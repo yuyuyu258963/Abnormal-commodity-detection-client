@@ -15,7 +15,7 @@ const getOption = ()=>{
   
   const option = {
     title: {
-      text:"Line Chart",
+      text:"平行坐标视图",
     },
     parallelAxis: [
       { dim: 0, name: '价格' },
@@ -24,17 +24,10 @@ const getOption = ()=>{
       { dim: 3, name: '评论数' },
       { dim: 4, name: '库存' },
     ],
-    // tooltip: {
-    //   // padding: 10,
-    //   // fill:"black",
-    //   // backgroundColor: "transparent",
-    //   // borderColor: '#777',
-    //   // borderWidth: 1,
-    // },
     tooltip: {
       backgroundColor:"rgba(52, 69, 107, 0.7)",
       textStyle: {
-        fontSize: "12px",
+        fontSize: "18px",
         fill: 'white',
         color: "white",
       } ,
@@ -100,7 +93,7 @@ const getOption = ()=>{
             ],
             lineStyle: {
               opacity: 0.5,
-              width: 1,
+              width: LineChartData.length > 10000 ? 1.5 : 2.5,
               // color: lineColor,
             },
           }
@@ -124,13 +117,13 @@ const getOption = ()=>{
   return option
 }
 
-export default function LineChart({}: Props) {
+function LineChart({}: Props) {
   
   return (
     <ReactECharts 
         option={getOption()} 
         lazyUpdate={true}
-        style={{width:"95%",height:"100%",margin:"0 auto"}}
+        style={{width:"100%",height:"100%",margin:"0 auto",overflow:"hidden"}}
         onEvents={{'click':(a:any)=>{
           let NodeInformation: (string | number)[]
           if (typeof a.data === "object") {
@@ -140,9 +133,10 @@ export default function LineChart({}: Props) {
           }
           throttle(SearchSinglePro)(NodeInformation)
           throttle(GetMatrixData)(NodeInformation[7])
-
           // SearchSinglePro(NodeInformation)
         }}}
       />
   )
 }
+
+export default React.memo(LineChart)

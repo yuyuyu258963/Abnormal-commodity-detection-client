@@ -3,4 +3,11 @@
   height: 92%;
   margin-top: 2px;
   border-top: 1.2px solid gray;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* 设置箱线图中线的粗细 */
+#box-map > path,line {
+  stroke-width: 3px;
 }

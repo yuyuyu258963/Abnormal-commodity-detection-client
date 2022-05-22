@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ReactECharts from 'echarts-for-react';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { CLASSED_DATA_FILTER, GET_CLUSTER_DATA } from '../../reducer/constant';
@@ -9,7 +9,7 @@ import { Modal, notification, Radio } from 'antd';
 
 type Props = {}
 
-export default function ClusterMeanView({}: Props) {
+function ClusterMeanView({}: Props) {
   const [update, setUpdate] = useState([false]);
   const [clickedClassId, setClickedClassId] = useState<number>(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -73,3 +73,6 @@ export default function ClusterMeanView({}: Props) {
     </>
   )
 }
+
+export default React.memo(ClusterMeanView);
+

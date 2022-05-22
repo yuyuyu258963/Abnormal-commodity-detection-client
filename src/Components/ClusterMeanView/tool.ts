@@ -133,7 +133,7 @@ export const handelClassedDataFilter = (clickedClassId: number,errorType:string)
   })
   const newNormalData = normalProductionData.filter((item:ProductsDataType) => !selectedIdGroups.includes(item.item_id))
   const newClusteredData = clusteredData.filter( item => item.classId !== clickedClassId)
-  store.dispatch(handelStoreClassedDataFilter({newFilteredData,newNormalData,newClusteredData}))
+  store.dispatch(handelStoreClassedDataFilter({newFilteredData,newNormalData,newClusteredData, clickedClassId}))
   notification.success({
     message: "筛选成功"
   })

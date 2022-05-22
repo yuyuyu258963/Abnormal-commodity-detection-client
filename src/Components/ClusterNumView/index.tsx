@@ -6,7 +6,7 @@ import { CLASSED_DATA_FILTER, GET_CLUSTER_DATA } from '../../reducer/constant';
 
 type Props = {}
 
-export default function ClusterNumView({}: Props) {
+function ClusterNumView({}: Props) {
   const [update, setUpdate] = useState([false]);
   useEffect(() => {
     store.subscribe(()=>{
@@ -29,3 +29,5 @@ export default function ClusterNumView({}: Props) {
       />
   )
 }
+
+export default React.memo(ClusterNumView);

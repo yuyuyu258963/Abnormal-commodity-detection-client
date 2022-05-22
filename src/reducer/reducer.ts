@@ -27,6 +27,7 @@ const initState:StoreDatatype = {
   priceErr:                 {},
   saleErr:                  {},
   historyMaxInfo:           [[[0,10],[0,10],[0,10],[0,10],[0,10],[0,10],]],
+  clickedClassId:           "",
   // value: "默认值"
 }
 
@@ -76,8 +77,9 @@ const reducer = (state = initState, action:any) => {
       state.clusteredData = data
       return state
     case CLASSED_DATA_FILTER:
-      const {newNormalData,newFilteredData,newClusteredData} = data;
+      const {newNormalData,newFilteredData,newClusteredData,clickedClassId} = data;
       state.actionName = CLASSED_DATA_FILTER
+      state.clickedClassId = clickedClassId
       state.normalProductionData = newNormalData;
       state.FilteredDataLen += newFilteredData.length;
       state.FilteredData.push(newFilteredData)

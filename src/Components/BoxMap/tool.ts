@@ -72,7 +72,8 @@ export const drawBoxMap = (selectedVal:number, BoxDataDraw:BoxDataType[]) => {
                   .attr('x', (d : any) => chartScaleX(d.name))
                   .attr('y', (d : any) => chartScaleY(d.Q3))
                   .attr('width', chartScaleX.bandwidth())
-                  .attr('height', (d:any) => chartScaleY(d.Q1) - chartScaleY(d.Q3));
+                  .attr('height', (d:any) => chartScaleY(d.Q1) - chartScaleY(d.Q3))
+                  .attr("stoke-width" , "5px");
     // console.log(groupsUpdate)
 
     // 绘制连接线
@@ -132,11 +133,19 @@ export const drawBoxMap = (selectedVal:number, BoxDataDraw:BoxDataType[]) => {
       
       // console.dir(errorLine)
       // 绘制异常值直线
+      // console.dir(selectedVal)
+      // console.dir(errorLine[selectedVal])
+      if(selectedVal === null){
+        selectedVal = 0
+      }
+      selectedVal = Number(selectedVal)
+
       if (selectedVal <2 && errorLine[selectedVal] !== -1) {
         // @ts-ignore
         d3.select(this)
           .append("line")
           .attr('stroke', "red")
+          .attr("stroke-width", "3px")
           .attr("x1", x1)
           .attr('x2', x2)
           .attr("y1", chartScaleY(errorLine[selectedVal]))
@@ -150,10 +159,12 @@ export const drawBoxMap = (selectedVal:number, BoxDataDraw:BoxDataType[]) => {
   chart.insert('g','.body')
         .attr('transform', 'translate(' + 0 + ',' + innerHeight + ')')
         .attr('class', 'xAxis')
+        .attr('stroke-width', "2px")
         .call(d3.axisBottom(chartScaleX));
 
   chart.insert('g','.body')
         .attr('transform', 'translate(' + 0 + ',' + 0 + ')')
         .attr('class', 'yAxis')
+        .attr('stroke-width', "2px")
         .call(d3.axisRight(chartScaleY).ticks(5));
 }

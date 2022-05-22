@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import { useEffect, useState } from "react";
 import { Brash } from "../../icons";
-import { GET_CLUSTER_DATA } from "../../reducer/constant";
+import { CLASSED_DATA_FILTER, GET_CLUSTER_DATA } from "../../reducer/constant";
 import { StoreDatatype } from "../../reducer/interface";
 import store from "../../reducer/store";
 import { classedDataType } from "../../types/interface";
@@ -23,9 +23,14 @@ export default function ClusterMap({}: Props) {
     drawScatterMap(clusteredData)
     store.subscribe(() => {
       const data :any = store.getState();
-      const {clusteredData,actionName} = data;
+      const {clusteredData,actionName,clickedClassId} = data;
       if (actionName === GET_CLUSTER_DATA) {
         setClusteredData(clusteredData)
+      }
+      if (actionName === CLASSED_DATA_FILTER) {
+        // FilteredData[FilteredData.length][0]
+        console.dir(d3.selectAll(`.class-${clickedClassId}`))
+        d3.selectAll(`.class-${clickedClassId}`).remove()
       }
     })
   },[])

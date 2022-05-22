@@ -23,8 +23,8 @@ function checkSelect(item:number, index:number, selectedDataIndex:number):string
 const rowMap = (lineData:number[], key:number, dataTitles:string[], selectedDataIndex: number, func:Function): JSX.Element => {
   // const [choicedDataId, setChoicedDataId] = useState("")
 
-  const dataLen = lineData.length ;
-  
+  const dataLen = lineData?.length ;
+  // console.dir(dataLen)
   return (
     <Fragment key={key} >
 
@@ -32,9 +32,9 @@ const rowMap = (lineData:number[], key:number, dataTitles:string[], selectedData
         lineData && lineData.map((item,index)=>{
           return <rect 
             key={index} 
-            x={heatMapElem.offsetLeft + 25 + (1250 - heatMapElem.offsetRight * 2) / dataLen * index}
+            x={dataLen === 0 ? 0 : heatMapElem.offsetLeft + 25 + (1250 - heatMapElem.offsetRight * 2) / dataLen * index}
             y={heatMapElem.offsetTop + key * heatMapElem.height + heatMapElem.lineSpan * key}
-            width={(1250 - heatMapElem.offsetRight * 2) / dataLen} 
+            width={dataLen === 0 ? 0 : (1250 - heatMapElem.offsetRight * 2) / dataLen} 
             height={heatMapElem.height}
             fill={getColor(item)}
             stroke={checkSelect(item,index,selectedDataIndex)}

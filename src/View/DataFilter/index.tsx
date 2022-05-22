@@ -1,5 +1,5 @@
 import { Button, Col, Input, InputNumber, Row, Select } from 'antd'
-import React, { createRef, memo, useState } from 'react'
+import React, { createRef, memo, useRef, useState } from 'react'
 import { RunCluster } from '../../axios'
 import ClusterMap from '../../Components/ClusterMap'
 import ClusterMeanView from '../../Components/ClusterMeanView'
@@ -9,10 +9,14 @@ import "./index.css"
 
 type Props = {}
 
+var clusterNum = 5
+
 function DataFilter({}: Props) {
   const [selectedClusterMethod, setClusterMethod] = useState<string>('OPTICS')
-  const [clusterNumber, setClusterNumber] = useState<number>(5)
+  // const [clusterNumber, setClusterNumber] = useState<number>(5)
+  // const clusterNum = useRef<number>(5);
   const [isClustered, setClusterState] = useState(false)
+  // console.dir(clusterNum.current)
   
   return (
     <div className="content dataFilterView">
@@ -33,7 +37,7 @@ function DataFilter({}: Props) {
             聚类数量：
           </Col>
           <Col span={3}>
-            <InputNumber min={1} max={20} defaultValue={5} onChange={v => setClusterNumber(v)} style={{marginTop:"3px"}} ></InputNumber >
+            <InputNumber min={1} max={20} defaultValue={clusterNum} onChange={v => clusterNum = v} style={{marginTop:"3px"}} ></InputNumber >
           </Col>
           {/* <Col span={1}></Col> */}
           <Col span={5} style={{marginTop:"3px"}} >
@@ -42,7 +46,8 @@ function DataFilter({}: Props) {
               loading={isClustered}
               onClick={()=>{
                 setClusterState(true);
-                RunCluster(selectedClusterMethod, clusterNumber).then(() => {
+                // RunCluster(selectedClusterMethod, clusterNumber).then(() => {
+                RunCluster(selectedClusterMethod, clusterNum).then(() => {
                   setClusterState(false);
                 })
               }} 

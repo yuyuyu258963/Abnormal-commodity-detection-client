@@ -83,7 +83,6 @@ export default function RightContent({}: Props) {
               onClick={() => {
                 // acceptFilter(saleErr.data, "销量异常")
                 setIsSaleModalVisible(true);
-
               }}
               >接受筛选</Button>
           </Col>
@@ -91,7 +90,7 @@ export default function RightContent({}: Props) {
       </div>
       
       <ReactECharts
-        option={GetFilterNumOptions(Number((All_percentNum * 100).toFixed(2)))} 
+        option={GetFilterNumOptions(Number((All_percentNum * 100).toFixed(2)))}
         lazyUpdate={true}
         style={{width:"100%",height:"50%",margin:"0 auto" ,borderTop:"1px solid gray"}}
       />

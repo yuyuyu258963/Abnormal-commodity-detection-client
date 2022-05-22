@@ -11,7 +11,7 @@ type Props = {}
 export default function LeftContent({}: Props) {
   const data:any = store.getState()
   const {priceErr, saleErr} = data;
-  
+
   return (
     <div>
       <section className="model-content" >
@@ -29,7 +29,7 @@ export default function LeftContent({}: Props) {
             </Row>
           </Col>
           <Col span="1" style={{overflow: "hidden"}} >
-            <div className="arrow" ></div>
+            <div className="arrow2" ></div>
           </Col>
           <Col span={9} >
             <TinyTable data={priceErr} Aper="jiao" func={UnionPriceErrColumns}  marginTop="135px" />
@@ -52,7 +52,7 @@ export default function LeftContent({}: Props) {
             </Row>
           </Col>
           <Col span="1" style={{overflow: "hidden"}} >
-            <div className="arrow" ></div>
+            <div className="arrow2" ></div>
           </Col>
           <Col span={9} >
             <TinyTable data={saleErr} Aper="jiao" func={UnionSaleErrColumns}  marginTop="130px" />
